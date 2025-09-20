@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkqbrqltm5q0b"]
+
+[ext_resource type="Script" uid="uid://bs4eq6stly8jr" path="res://cifar_preprocessor.gd" id="1_dv6g1"]
+
+[node name="CIFARPreprocessor" type="Node"]
+script = ExtResource("1_dv6g1")
+dataset_path = "C:\\Users\\Jhuss\\Downloads\\cifar-10\\train\\train"
+auto_process_full_dataset = true
+process_on_ready = true

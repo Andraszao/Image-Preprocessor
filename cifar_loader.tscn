@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbv0auwt4ek75"]
+
+[ext_resource type="Script" uid="uid://f12sah02rw5g" path="res://cifar_loader.gd" id="1_avf1k"]
+
+[node name="CIFARLoader" type="Node"]
+script = ExtResource("1_avf1k")
