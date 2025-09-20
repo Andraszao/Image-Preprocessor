@@ -4,50 +4,56 @@
 [![Godot Engine](https://img.shields.io/badge/Godot-4.0+-blue.svg)](https://godotengine.org/)
 [![Performance](https://img.shields.io/badge/Performance-117%2B%20img%2Fsec-green.svg)](#performance)
 
-A high-performance image preprocessing tool that converts PNG datasets into optimized JSON/binary batches for machine learning training pipelines. 
+A fast image preprocessing tool for converting PNG datasets into optimized batches for machine learning training. Built while exploring AI systems in Godot - turns out the engine handles dataset processing surprisingly well with some optimization work.
 
-Originally designed for CIFAR-10, it's evolved into a comprehensive preprocessing solution with advanced memory management and thermal-aware processing.
+Started as a CIFAR-10 preprocessor, evolved into a general-purpose tool with memory pooling and thermal management.
 
-## Key Achievements
+## Why This Exists
 
-- **117+ images/second** sustained processing on laptop hardware
-- **<6MB RAM growth** during 50,000 image processing (memory-efficient)
-- **Thermal-safe processing** with automatic CPU throttling
-- **1,000+ memory allocations eliminated** per image through advanced pooling
-- **Production-ready** with comprehensive error handling and monitoring
+Built this while exploring AI systems in Godot. Needed to preprocess CIFAR-10 datasets and was surprised how well Godot handled it with some optimization work. Figured others might find it useful.
+
+## What It Does
+
+- **117+ images/second** processing on laptop hardware (Intel Iris Xe)
+- **<6MB RAM growth** during 50,000 image processing 
+- **Thermal-safe** - won't overheat your laptop
+- **Memory optimized** - eliminates 1,000+ allocations per image
+- **Reliable** - handles errors and monitors performance
+
+> **Note:** Benchmarked on laptop hardware. Desktop systems will be significantly faster.
 
 ## Features
 
 ### Performance & Optimization
-- **Vectorized RGB conversion** with SIMD-style optimizations
-- **Memory pooling system** eliminates garbage collection pressure
-- **PackedFloat32Array optimization** removes 1,000+ allocations per image
-- **Raw byte access** bypasses slow pixel-by-pixel operations
-- **Adaptive workload scaling** prevents CPU overheating
+- **Vectorized RGB conversion** - processes multiple pixels at once
+- **Memory pooling** - reuses arrays to avoid garbage collection
+- **PackedFloat32Array** - eliminates nested array allocations
+- **Raw byte access** - skips slow pixel-by-pixel operations
+- **Adaptive scaling** - adjusts workload to prevent overheating
 
 ### Thermal Management
-- **Laptop-safe processing** with configurable thermal limits
-- **Real-time CPU monitoring** with automatic throttling
-- **Desktop vs laptop modes** for optimal performance/safety balance
-- **Sustained processing** without thermal throttling
+- **Laptop-safe** - won't cook your hardware
+- **CPU monitoring** - automatically throttles when needed
+- **Desktop vs laptop modes** - different limits for different hardware
+- **Sustained processing** - runs for hours without overheating
 
 ### Monitoring & Reliability
-- **Real-time performance metrics** with regression detection
-- **Memory pressure monitoring** with automatic cleanup
-- **Progress reporting** with ETA calculations
-- **Comprehensive error handling** and recovery
-- **Debug functions** for troubleshooting and validation
+- **Performance metrics** - tracks speed and detects slowdowns
+- **Memory monitoring** - cleans up before running out of RAM
+- **Progress reporting** - shows ETA and current status
+- **Error handling** - recovers from common issues
+- **Debug functions** - tools for troubleshooting
 
 ### Output Formats
-- **JSON batches** for human-readable output
-- **Binary format** for maximum performance and smaller files
-- **Configurable batch sizes** (1K-10K+ images per file)
-- **Preserves image quality** with lossless float32 precision
+- **JSON batches** - human-readable
+- **Binary format** - faster and smaller
+- **Configurable batch sizes** - 1K to 10K+ images per file
+- **Float32 precision** - lossless quality
 
 ## Use Cases
 
-- **Use Case: Preprocessor** - Convert large PNG datasets into optimized JSON batches for training
-- **Use Case: Loader** - Runtime loading of processed image data for neural network training loops
+- **Preprocessing** - Convert PNG datasets to optimized batches for ML training
+- **Loading** - Runtime loading of processed data for neural networks
 
 ## Quick Start
 
@@ -60,7 +66,7 @@ Originally designed for CIFAR-10, it's evolved into a comprehensive preprocessin
 ### Installation
 1. **Clone this repository** or download the scripts
    ```bash
-   git clone https://github.com/your-username/cifar-preprocessor-godot.git
+   git clone https://github.com/Andraszao/Image-Preprocessor
    ```
 
 2. **Add scripts to your Godot project**
@@ -144,7 +150,7 @@ baseline_fps: float = 92.6             # Baseline FPS for performance comparison
 
 The preprocessor creates JSON batch files with the following structure:
 
-### JSON Format (Human-readable)
+### JSON Format (readable)
 ```json
 {
   "1": {
@@ -252,14 +258,9 @@ func _on_load_progress(current: int, total: int):
 
 ### Tested Platforms
 - **Windows 10/11** (Primary development platform)
-- **Linux** (Ubuntu 20.04+, Fedora 35+)
-- **macOS** (10.15+, including Apple Silicon)
 
 ### Performance Notes
 - **Intel Iris Xe Graphics**: 117+ img/sec sustained
-- **AMD Ryzen 7**: 180+ img/sec sustained  
-- **Apple M1/M2**: 200+ img/sec sustained
-- **High-end Desktop**: 250+ img/sec sustained
 
 ## Contributing
 
@@ -296,15 +297,11 @@ See [LICENSE](LICENSE) for full details.
 
 **zephyrus @ inchworm games**
 
-- Twitter: [@your_twitter](https://twitter.com/your_twitter)
-- Email: your.email@example.com
 - Website: [inchwormgames.com](https://inchwormgames.com)
 
 ---
 
 <div align="center">
-
-**Optimized for neural network training pipelines with production-grade performance monitoring and adaptive resource management**
 
 *If this project helped you, consider giving it a star!*
 
