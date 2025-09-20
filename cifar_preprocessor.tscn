@@ -4,6 +4,6 @@
 
 [node name="CIFARPreprocessor" type="Node"]
 script = ExtResource("1_dv6g1")
-dataset_path = "C:\\Users\\Jhuss\\Downloads\\cifar-10\\train\\train"
+dataset_path = ""
 auto_process_full_dataset = true
 process_on_ready = true
